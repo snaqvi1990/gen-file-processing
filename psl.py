@@ -10,7 +10,6 @@ def readPSLs(psl_file,flip):
     num_blocks = 0
     for line in f:
         list = line.split('\t')
-        #print list[-3]
         chr_size = int(list[-7])
         gen_strand = list[8][1]
         block_sizes = map(int, list[-3].strip().strip(',').split(','))
@@ -34,9 +33,7 @@ def readPSLmultiLine(psl_file, min_max_sort_option,best_match_only,flip):
     f = open(psl_file,'r')
     num_blocks = 0
     for line in f:
-        #print line.strip().split('\t')
         list = line.strip().split('\t')
-        #print list[-3]
         chr_size = int(list[-7])
         gen_strand = list[8]
         block_sizes = map(int, list[-3].strip().strip(',').split(','))
@@ -52,7 +49,6 @@ def readPSLmultiLine(psl_file, min_max_sort_option,best_match_only,flip):
             q_starts = sorted(q_starts)
             t_starts = sorted(t_starts)
             block_sizes = [block_size for t_start,block_size in sorted(zip(t_starts,block_sizes))]
-            #print t_starts
         qCoord2tCoord = {}
         for i in range(len(q_starts)):
             qstart = q_starts[i]

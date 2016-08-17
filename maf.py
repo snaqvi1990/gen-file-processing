@@ -10,16 +10,10 @@ class pairMaf:
 
     def subSeq(self,coord1,coord2,gap_strip='n',refidx=0):
         for block_pair in self.blocks:
-            #print str(block_pair[refidx].start) + '\t' + str(block_pair[refidx].start+block_pair[refidx].length)
             if block_pair[refidx].contains(coord1):
                 if block_pair[refidx].contains(coord1,coord2):
-                    #print block_pair[refidx].start
                     return block_pair[refidx].subSeq(coord1,coord2,gap_strip)
                 else:
-                    #print block_pair[refidx].coords
-                    #print block_pair[refidx].start
-                    #print block_pair[refidx].start+block_pair[refidx].length
-                    #print block_pair[refidx].seq
                     return block_pair[refidx].subSeq(coord1,(block_pair[refidx].start+block_pair[refidx].length),gap_strip)
             
 
