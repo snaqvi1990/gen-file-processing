@@ -4,7 +4,7 @@ from Bio.Seq import Seq
 from Bio import SeqIO
 import parse_fa_chr
 
-#reads in a PSL file and gives relevant information (can be changed to give different information if needed)
+#reads in a PSL file and provides block sizes, query start positions, target start positions, mapping between query and target coordinates, and strand of hits
 def readPSLs(psl_file,flip):
     f = open(psl_file,'r')
     num_blocks = 0
@@ -27,7 +27,7 @@ def readPSLs(psl_file,flip):
     f.close()
     return block_sizes, q_starts, t_starts, qCoord2tCoord, gen_strand
 
-# returns a list of a dictionaries of all relevant information in each line from PSL file
+# returns a list of a dictionaries of all relevant information in each line from PSL file. Can sort hits by positions using min_max_sort_option, can return info on only best match
 def readPSLmultiLine(psl_file, min_max_sort_option,best_match_only,flip):
     psl_lines = []
     f = open(psl_file,'r')
